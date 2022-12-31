@@ -24,6 +24,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Docker
 
+* Warning : prod build on your local machine
+
 ```shell
 docker build -t vmagne/uponchartfront .
 docker run -d -p 8081:80 vmagne/uponchartfront:latest
