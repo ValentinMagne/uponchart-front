@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "./service/user-service";
 import { UserBusinessModel } from "./business-model/user.business-model";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from "./service/login.service";
+import { FormLoginModel } from "./model/form-login.model";
 
 @Component({
   selector: 'app-root',
@@ -9,11 +12,26 @@ import { UserBusinessModel } from "./business-model/user.business-model";
 })
 export class AppComponent implements OnInit {
   title = 'uponchart-front';
+  public form!: FormGroup;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private loginService: LoginService) {
   }
 
   public ngOnInit(): void {
+    this.form = new FormGroup({
+      login: new FormControl("admin@uponchart.com", [Validators.required]),
+      password: new FormControl("uponchart", [Validators.required])
+    });
+  }
+
+  public onSubmit(): void {
+    if (!this.form.valid) return;
+    this.loginService.postLogin(this.form.value as FormLoginModel).subscribe(() => {
+      this.getUsers();
+    });
+  }
+
+  private getUsers(): void {
     this.userService.getUsers().subscribe((users: UserBusinessModel[]) => {
       console.warn(users);
     })
