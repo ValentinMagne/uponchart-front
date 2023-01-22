@@ -1,12 +1,12 @@
 <h1>Uponchart</h1>
 <form [formGroup]="form" (submit)="onSubmit()">
-  <label for="login-input">email</label>
-  <input id="login-input"
-         type="text"
-         formControlName="login"/>
-  <label for="password-input">password</label>
-  <input id="password-input"
-         type="text"
-         formControlName="password"/>
-  <button type="submit">login</button>
+  <mat-form-field>
+    <mat-label>Login</mat-label>
+    <input type="text" formControlName="login" matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input type="password" formControlName="login" matInput>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="accent" class="mr-1">Login</button>
 </form>
