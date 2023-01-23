@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from "./service/user-service";
 import { UserBusinessModel } from "./business-model/user.business-model";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import { FormLoginModel } from "./model/form-login.model";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'uponchart-front';
   public form!: FormGroup;
 
@@ -22,6 +22,10 @@ export class AppComponent implements OnInit {
       login: new FormControl("admin@uponchart.com", [Validators.required]),
       password: new FormControl("uponchart", [Validators.required])
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.loginService.removeSession();
   }
 
   public onSubmit(): void {

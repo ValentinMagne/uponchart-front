@@ -31,4 +31,8 @@ export class LoginService {
   private static setSession(loginBusinessModel: LoginBusinessModel): void {
     localStorage.setItem(TOKEN_KEY, loginBusinessModel.token);
   }
+
+  public removeSession(): void {
+    localStorage.removeItem(TOKEN_KEY);
+  }
 }
