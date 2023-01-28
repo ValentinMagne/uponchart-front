@@ -6,6 +6,12 @@ import { AppRootComponent } from './core/components/app-root/app-root.component'
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthInterceptor } from "./core/interceptors/auth.interceptor";
 import { LoginModule } from "./features/login/login.module";
+import { NgxsModule } from "@ngxs/store";
+import { environment } from "../environments/environment";
+import { AuthState } from "./core/auth/auth-state";
+import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
+import { HomeModule } from "./features/home/home.module";
+import { AuthGuard } from "./core/guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -14,9 +20,17 @@ import { LoginModule } from "./features/login/login.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule
+    LoginModule,
+    HomeModule,
+    NgxsModule.forRoot([AuthState], {
+      developmentMode: !environment.production
+    }),
+    NgxsStoragePluginModule.forRoot({
+      key: 'auth.token'
+    })
   ],
   providers: [
+    AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppRootComponent]

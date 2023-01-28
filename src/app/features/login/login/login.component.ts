@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../../core/services/user-service";
-import { LoginService } from "../../../core/services/login.service";
+import { AuthService } from "../../../core/services/auth.service";
 import { FormLoginModel } from "../../../core/models/form-login.model";
 import { UserBusinessModel } from "../../../core/business/user.business-model";
+import { Store } from "@ngxs/store";
+import { Login } from "../../../core/auth/login";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,9 @@ import { UserBusinessModel } from "../../../core/business/user.business-model";
 export class LoginComponent implements OnInit {
   public form!: FormGroup;
 
-  constructor(private userService: UserService, private loginService: LoginService) {
+  constructor(private userService: UserService,
+              private loginService: AuthService,
+              private store: Store) {
   }
 
   public ngOnInit(): void {
@@ -25,9 +29,7 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     if (!this.form.valid) return;
-    this.loginService.postLogin(this.form.value as FormLoginModel).subscribe(() => {
-      this.getUsers();
-    });
+    this.store.dispatch(new Login(this.form.value as FormLoginModel));
   }
 
   private getUsers(): void {
