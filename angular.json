@@ -28,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/scss/upon-chart-theme.scss",
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -97,7 +97,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/scss/upon-chart-theme.scss",
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
