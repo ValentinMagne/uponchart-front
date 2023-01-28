@@ -2,9 +2,9 @@ import { HttpClient, HttpContext } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
 
-import { ApiRoutes } from "../core/config/api-routes";
-import { LoginBusinessModel } from "../business-model/login.business-model";
-import { FormLoginModel } from "../model/form-login.model";
+import { ApiRoutes } from "../config/api-routes";
+import { LoginBusinessModel } from "../business/login.business-model";
+import { FormLoginModel } from "../models/form-login.model";
 import { SKIP_AUTH_BEARER } from "../interceptors/auth.interceptor";
 
 export const TOKEN_KEY = 'uponchart_token';

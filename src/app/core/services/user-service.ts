@@ -2,8 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { ApiRoutes } from "../core/config/api-routes";
-import { UserBusinessModel } from "../business-model/user.business-model";
+import { ApiRoutes } from "../config/api-routes";
+import { UserBusinessModel } from "../business/user.business-model";
 
 @Injectable({
   providedIn: 'root',

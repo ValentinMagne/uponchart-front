@@ -1,17 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UserService } from "./service/user-service";
-import { UserBusinessModel } from "./business-model/user.business-model";
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from "./service/login.service";
-import { FormLoginModel } from "./model/form-login.model";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { UserService } from "../../../core/services/user-service";
+import { LoginService } from "../../../core/services/login.service";
+import { FormLoginModel } from "../../../core/models/form-login.model";
+import { UserBusinessModel } from "../../../core/business/user.business-model";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'uponchart-front';
+export class LoginComponent implements OnInit {
   public form!: FormGroup;
 
   constructor(private userService: UserService, private loginService: LoginService) {
@@ -22,10 +21,6 @@ export class AppComponent implements OnInit, OnDestroy {
       login: new FormControl("admin@uponchart.com", [Validators.required]),
       password: new FormControl("uponchart", [Validators.required])
     });
-  }
-
-  public ngOnDestroy(): void {
-    this.loginService.removeSession();
   }
 
   public onSubmit(): void {
