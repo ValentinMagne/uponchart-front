@@ -3,10 +3,8 @@ import { Injectable } from "@angular/core";
 import { UserStateModel } from "./user.state-model";
 import { UserService } from "../services/user-service";
 import { FetchUserAction } from "./fetch-user.action";
-import { catchError, map, take, tap, throwError } from "rxjs";
+import { tap } from "rxjs";
 import { UserBusinessModel } from "../business/user.business-model";
-import { Router } from "@angular/router";
-import { RouteEnum } from "../enums/route.enum";
 
 @State<UserStateModel>({
   name: 'user',
@@ -22,27 +20,16 @@ export class UserState {
     return state.user;
   }
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService) {
   }
 
   @Action(FetchUserAction)
   fetchUser(ctx: StateContext<UserStateModel>) {
     return this.userService.getMe().pipe(
-      take(1),
-      map((user: UserBusinessModel) => {
-        if (!user.consented) {
-          this.router.navigate([RouteEnum.CONSENT]);
-        }
-        return user;
-      }),
       tap((user: UserBusinessModel) => {
         ctx.patchState({
           user
         })
-      }),
-      catchError((err) => {
-        this.router.navigate([RouteEnum.LOGIN]);
-        return throwError(err);
       })
     )
   }

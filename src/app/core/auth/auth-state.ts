@@ -7,6 +7,7 @@ import { Logout } from "./logout";
 import { AuthService, TOKEN_KEY } from "../services/auth.service";
 import { Router } from "@angular/router";
 import { LoginBusinessModel } from "../business/login.business-model";
+import { RouteEnum } from "../enums/route.enum";
 
 @State<AuthStateModel>({
   name: 'auth',
@@ -40,7 +41,7 @@ export class AuthState {
           username: action.payload.login
         });
         this.ngZone.run(() => {
-          this.router.navigate(['']);
+          this.router.navigate([RouteEnum.HOME]);
         });
       })
     );

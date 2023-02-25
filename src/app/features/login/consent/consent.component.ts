@@ -5,7 +5,6 @@ import { ApiRoutes } from "../../../core/config/api-routes";
 import { Logout } from "../../../core/auth/logout";
 import { Store } from "@ngxs/store";
 import { environment } from "../../../../environments/environment";
-import { FetchUserAction } from "../../../core/user/fetch-user.action";
 import { RouteEnum } from "../../../core/enums/route.enum";
 
 @Component({
@@ -14,7 +13,10 @@ import { RouteEnum } from "../../../core/enums/route.enum";
   styleUrls: ["./consent.component.scss"]
 })
 export class ConsentComponent implements OnInit {
+  public routes = RouteEnum;
+  public shouldConsent = false;
   public consented = false;
+  public consentError = false;
   private static readonly REDIRECT_URI = environment.ebayRedirectURI;
   private static readonly APP_ID = environment.ebayAppId;
 
@@ -27,8 +29,9 @@ export class ConsentComponent implements OnInit {
   public ngOnInit(): void {
     const oAuthConsentCode: string = this.activatedRoute.snapshot.queryParams["code"];
     if (oAuthConsentCode) {
-      this.consented = true;
       this.exchangeAuthCodeForUserAccessToken(oAuthConsentCode);
+    } else {
+      this.shouldConsent = true;
     }
   }
 
@@ -41,10 +44,10 @@ export class ConsentComponent implements OnInit {
   private exchangeAuthCodeForUserAccessToken(authCode: string): void {
     this.http.post(ApiRoutes.ebayToken, {token: authCode}).subscribe({
       next: () => {
-        this.store.dispatch(FetchUserAction);
+        this.consented = true;
       },
       error: () => {
-        this.router.navigate([RouteEnum.LOGIN]);
+        this.consentError = true;
       }
     });
   }
