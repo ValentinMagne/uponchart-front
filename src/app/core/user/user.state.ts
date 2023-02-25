@@ -1,10 +1,11 @@
-import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { UserStateModel } from "./user.state-model";
 import { UserService } from "../services/user-service";
 import { FetchUserAction } from "./fetch-user.action";
-import { tap } from "rxjs";
+import { catchError, tap } from "rxjs";
 import { UserBusinessModel } from "../business/user.business-model";
+import { Logout } from "../auth/logout";
 
 @State<UserStateModel>({
   name: 'user',
@@ -20,7 +21,7 @@ export class UserState {
     return state.user;
   }
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private store: Store) {
   }
 
   @Action(FetchUserAction)
@@ -30,6 +31,10 @@ export class UserState {
         ctx.patchState({
           user
         })
+      }),
+      catchError((err) => {
+        this.store.dispatch(Logout);
+        throw err;
       })
     )
   }

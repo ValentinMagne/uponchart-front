@@ -6,6 +6,8 @@ import { Logout } from "../../auth/logout";
 import { RouteEnum } from "../../enums/route.enum";
 import { Observable } from "rxjs";
 import { AuthState } from "../../auth/auth-state";
+import { UserState } from "../../user/user.state";
+import { UserBusinessModel } from "../../business/user.business-model";
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,7 @@ import { AuthState } from "../../auth/auth-state";
 })
 export class AppRootComponent implements OnInit {
   public routes = RouteEnum;
+  @Select(UserState.user) user$!: Observable<UserBusinessModel> | null;
   @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
 
   constructor(private authService: AuthService,

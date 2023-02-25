@@ -4,9 +4,12 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #headingMenu>
-    <button mat-menu-item *ngIf="isAuthenticated$ | async" routerLink="{{routes.ACCOUNT}}">Compte</button>
+    <ng-container *ngIf="isAuthenticated$ | async">
+      <div class="identity">{{(user$ | async)?.login}}</div>
+      <button mat-menu-item routerLink="{{routes.ACCOUNT}}">Compte</button>
+      <button mat-menu-item (click)="logout()">Déconnexion</button>
+    </ng-container>
     <button mat-menu-item *ngIf="!(isAuthenticated$ | async)" routerLink="{{routes.LOGIN}}">Connexion</button>
-    <button mat-menu-item *ngIf="isAuthenticated$ | async" (click)="logout()">Déconnexion</button>
   </mat-menu>
 </mat-toolbar>
 <div class="container">
