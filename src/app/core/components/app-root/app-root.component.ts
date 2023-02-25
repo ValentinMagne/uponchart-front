@@ -16,6 +16,7 @@ import { UserBusinessModel } from "../../business/user.business-model";
 })
 export class AppRootComponent implements OnInit {
   public routes = RouteEnum;
+  public lightTheme = true;
   @Select(UserState.user) user$!: Observable<UserBusinessModel> | null;
   @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
 
@@ -33,5 +34,11 @@ export class AppRootComponent implements OnInit {
 
   public logout(): void {
     this.store.dispatch(Logout);
+  }
+
+  public toggleTheme(): void {
+    const body = document.getElementsByTagName("body")[0];
+    body.classList.toggle("dark-theme");
+    this.lightTheme = !this.lightTheme;
   }
 }
