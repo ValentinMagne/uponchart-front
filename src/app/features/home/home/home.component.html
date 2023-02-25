@@ -1,1 +1,6 @@
-<button routerLink="login" mat-raised-button color="primary">Login</button>
+<ng-container *ngIf='user$ | async as user'>
+  <pre>You are connected with {{user.login}}</pre>
+  <app-seller-funds-summary></app-seller-funds-summary>
+  <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+  <button *ngIf="!user.consented" routerLink="login/consent" mat-raised-button color="primary">Consent</button>
+</ng-container>

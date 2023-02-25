@@ -12,6 +12,8 @@ import { AuthState } from "./core/auth/auth-state";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { HomeModule } from "./features/home/home.module";
 import { AuthGuard } from "./core/guards/auth.guard";
+import { TOKEN_KEY } from "./core/services/auth.service";
+import { UserState } from "./core/user/user.state";
 
 @NgModule({
   declarations: [
@@ -22,11 +24,11 @@ import { AuthGuard } from "./core/guards/auth.guard";
     AppRoutingModule,
     LoginModule,
     HomeModule,
-    NgxsModule.forRoot([AuthState], {
+    NgxsModule.forRoot([AuthState, UserState], {
       developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
-      key: 'auth.token'
+      key: TOKEN_KEY
     })
   ],
   providers: [

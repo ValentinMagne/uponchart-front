@@ -9,10 +9,12 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
+import { ConsentComponent } from "./consent/consent.component";
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ConsentComponent
   ],
   imports: [
     CommonModule,

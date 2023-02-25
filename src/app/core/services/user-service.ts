@@ -13,6 +13,10 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
+  public getMe(): Observable<UserBusinessModel> {
+    return this.http.get<UserBusinessModel>(ApiRoutes.me);
+  }
+
   public getUsers(): Observable<UserBusinessModel[]> {
     return this.http.get<UserBusinessModel[]>(ApiRoutes.users);
   }

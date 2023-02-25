@@ -4,7 +4,7 @@ import { AuthStateModel } from "./auth-state-model";
 import { Login } from "./login";
 import { tap } from "rxjs";
 import { Logout } from "./logout";
-import { AuthService } from "../services/auth.service";
+import { AuthService, TOKEN_KEY } from "../services/auth.service";
 import { Router } from "@angular/router";
 import { LoginBusinessModel } from "../business/login.business-model";
 
@@ -48,13 +48,10 @@ export class AuthState {
 
   @Action(Logout)
   logout(ctx: StateContext<AuthStateModel>) {
-    return this.authService.logout().pipe(
-      tap(() => {
-        ctx.setState({
-          token: null,
-          username: null
-        });
-      })
-    );
+    ctx.setState({
+      token: null,
+      username: null
+    });
+    localStorage.removeItem(TOKEN_KEY);
   }
 }

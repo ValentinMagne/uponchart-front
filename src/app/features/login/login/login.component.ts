@@ -3,9 +3,9 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../../core/services/user-service";
 import { AuthService } from "../../../core/services/auth.service";
 import { FormLoginModel } from "../../../core/models/form-login.model";
-import { UserBusinessModel } from "../../../core/business/user.business-model";
 import { Store } from "@ngxs/store";
 import { Login } from "../../../core/auth/login";
+import { FetchUserAction } from "../../../core/user/fetch-user.action";
 
 @Component({
   selector: 'app-login',
@@ -29,12 +29,8 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     if (!this.form.valid) return;
-    this.store.dispatch(new Login(this.form.value as FormLoginModel));
-  }
-
-  private getUsers(): void {
-    this.userService.getUsers().subscribe((users: UserBusinessModel[]) => {
-      console.warn(users);
-    })
+    this.store.dispatch(new Login(this.form.value as FormLoginModel)).subscribe(() => {
+      this.store.dispatch(FetchUserAction);
+    });
   }
 }

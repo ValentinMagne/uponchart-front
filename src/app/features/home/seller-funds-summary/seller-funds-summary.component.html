@@ -1,0 +1,22 @@
+<ng-container *ngIf="funds">
+  <ng-container
+    [ngTemplateOutlet]="fund"
+    [ngTemplateOutletContext]="{$implicit: funds.totalFunds, title: 'Fonds'}"
+  ></ng-container>
+  <ng-container
+    [ngTemplateOutlet]="fund"
+    [ngTemplateOutletContext]="{$implicit: funds.availableFunds, title: 'Fonds disponibles'}"
+  ></ng-container>
+  <ng-container
+    [ngTemplateOutlet]="fund"
+    [ngTemplateOutletContext]="{$implicit: funds.fundsOnHold, title: 'Fonds en attente'}"
+  ></ng-container>
+  <ng-container
+    [ngTemplateOutlet]="fund"
+    [ngTemplateOutletContext]="{$implicit: funds.processingFunds, title: 'Fonds en cours de traitement'}"
+  ></ng-container>
+</ng-container>
+<ng-template #fund let-fund let-title="title">
+  <h2>{{title}}</h2>
+  <p>{{fund.value}} {{fund.currency}}</p>
+</ng-template>
