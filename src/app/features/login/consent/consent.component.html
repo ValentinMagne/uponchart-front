@@ -1,9 +1,9 @@
-<ng-container *ngIf="!consent">
+<ng-container *ngIf="!consented">
   <p>Afin de pouvoir continuer, vous devez partager vos informations eBay avec Upon Chart !</p>
   <button mat-raised-button color="primary" (click)="redirectToConsent()">Partager</button>
   <button mat-raised-button color="warn" (click)="logout()">Me déconnecter</button>
 </ng-container>
-<ng-container *ngIf="consent">
+<ng-container *ngIf="consented">
   <p>Bravo ! Vous pouvez désormais utiliser toutes les fonctionnalités d'Upon Chart !</p>
   <button routerLink="" mat-raised-button color="warn">Retour</button>
 </ng-container>
