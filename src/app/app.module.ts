@@ -14,6 +14,10 @@ import { HomeModule } from "./features/home/home.module";
 import { TOKEN_KEY } from "./core/services/auth.service";
 import { UserState } from "./core/user/user.state";
 import { AccountModule } from "./features/account/account.module";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { AccountModule } from "./features/account/account.module";
     }),
     NgxsStoragePluginModule.forRoot({
       key: TOKEN_KEY
-    })
+    }),
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -1,0 +1,11 @@
+@import "breakpoints";
+
+.d-none, .d-md-block {
+  display: none;
+}
+
+@media (min-width: #{$screen-md-min}) {
+  .d-md-block {
+    display: block;
+  }
+}

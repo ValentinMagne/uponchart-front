@@ -1,2 +1,14 @@
-<h1>Upon Chart</h1>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" role="heading" class="justify-content-between">
+  <h1 class="m-0 mouse-over" routerLink="{{routes.HOME}}">Upon Chart</h1>
+  <button mat-icon-button aria-label="menu" [matMenuTriggerFor]="headingMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #headingMenu>
+    <button mat-menu-item *ngIf="isAuthenticated$ | async" routerLink="{{routes.ACCOUNT}}">Compte</button>
+    <button mat-menu-item *ngIf="!(isAuthenticated$ | async)" routerLink="{{routes.LOGIN}}">Connexion</button>
+    <button mat-menu-item *ngIf="isAuthenticated$ | async" (click)="logout()">Déconnexion</button>
+  </mat-menu>
+</mat-toolbar>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

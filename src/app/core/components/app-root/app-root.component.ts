@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
-import { Actions, ofActionDispatched, Store } from "@ngxs/store";
+import { Actions, ofActionDispatched, Select, Store } from "@ngxs/store";
 import { Router } from "@angular/router";
 import { Logout } from "../../auth/logout";
 import { RouteEnum } from "../../enums/route.enum";
+import { Observable } from "rxjs";
+import { AuthState } from "../../auth/auth-state";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,8 @@ import { RouteEnum } from "../../enums/route.enum";
   styleUrls: ['./app-root.component.scss']
 })
 export class AppRootComponent implements OnInit {
+  public routes = RouteEnum;
+  @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
 
   constructor(private authService: AuthService,
               private store: Store,
@@ -22,5 +26,9 @@ export class AppRootComponent implements OnInit {
     this.actions.pipe(ofActionDispatched(Logout)).subscribe(() => {
       this.router.navigate([RouteEnum.LOGIN]);
     });
+  }
+
+  public logout(): void {
+    this.store.dispatch(Logout);
   }
 }

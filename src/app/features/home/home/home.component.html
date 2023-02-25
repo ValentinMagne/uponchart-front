@@ -1,7 +1,4 @@
 <ng-container *ngIf='user$ | async as user'>
-  <pre>You are connected with {{user.login}}</pre>
-  <button mat-raised-button color="warn" (click)="logout()">Logout</button>
-  <button routerLink="{{routes.ACCOUNT}}" mat-raised-button color="primary">Voir mon profil</button>
-  <button *ngIf="!user.consented" routerLink="{{routes.CONSENT}}" mat-raised-button color="primary">Consent</button>
+  <pre class="d-md-block">You are connected with {{user.login}}</pre>
   <app-seller-funds-summary></app-seller-funds-summary>
 </ng-container>
