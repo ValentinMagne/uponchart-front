@@ -21,7 +21,7 @@
   <p>{{fund.value}} {{fund.currency}}</p>
 </ng-template>
 <ng-container *ngIf="(error$ | async) === true">
-  <p>Une erreur est survenue</p>
+  <app-error></app-error>
 </ng-container>
 <ng-container *ngIf="(loading$ | async) === true">
   <app-spinner></app-spinner>

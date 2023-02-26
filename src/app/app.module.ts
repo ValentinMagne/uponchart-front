@@ -24,7 +24,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
-    AppRootComponent,
+    AppRootComponent
   ],
   imports: [
     BrowserModule,
