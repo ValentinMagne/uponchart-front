@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EbayService } from "../../../core/services/ebay.service";
 import { SellerFundsSummaryBusinessModel } from "../../../core/business/seller-funds-summary.business-model";
+import { Select, Store } from "@ngxs/store";
+import { Observable } from "rxjs";
+import { SellerFundsSummaryState } from "../states/seller-funds-summary.state";
+import { FetchSellerFundsSummaryAction } from "../states/fetch-seller-funds-summary.action";
 
 @Component({
   selector: 'app-seller-funds-summary',
@@ -9,14 +12,12 @@ import { SellerFundsSummaryBusinessModel } from "../../../core/business/seller-f
 })
 export class SellerFundsSummaryComponent implements OnInit {
 
-  public funds?: SellerFundsSummaryBusinessModel;
+  @Select(SellerFundsSummaryState.sellerFundsSummary) funds$!: Observable<SellerFundsSummaryBusinessModel> | null;
 
-  constructor(private ebayService: EbayService) {
+  constructor(private store: Store) {
   }
 
   public ngOnInit(): void {
-    this.ebayService.getSellerFundsSummary().subscribe((data: SellerFundsSummaryBusinessModel) => {
-      this.funds = data;
-    })
+    this.store.dispatch(FetchSellerFundsSummaryAction);
   }
 }

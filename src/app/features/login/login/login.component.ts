@@ -5,7 +5,6 @@ import { AuthService } from "../../../core/services/auth.service";
 import { FormLoginModel } from "../../../core/models/form-login.model";
 import { Store } from "@ngxs/store";
 import { Login } from "../../../core/auth/login";
-import { FetchUserAction } from "../../../core/user/fetch-user.action";
 
 @Component({
   selector: 'app-login',

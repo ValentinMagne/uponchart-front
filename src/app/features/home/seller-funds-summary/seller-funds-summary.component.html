@@ -1,4 +1,4 @@
-<ng-container *ngIf="funds">
+<ng-container *ngIf="funds$ | async as funds">
   <ng-container
     [ngTemplateOutlet]="fund"
     [ngTemplateOutletContext]="{$implicit: funds.totalFunds, title: 'Fonds'}"

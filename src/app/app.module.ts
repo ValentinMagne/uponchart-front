@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatMenuModule } from "@angular/material/menu";
+import { JwtExpiredErrorHandler } from "./core/handlers/jwt-expired.error-handler";
+import { SellerFundsSummaryState } from "./features/home/states/seller-funds-summary.state";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import { MatMenuModule } from "@angular/material/menu";
     LoginModule,
     HomeModule,
     AccountModule,
-    NgxsModule.forRoot([AuthState, UserState], {
+    NgxsModule.forRoot([AuthState, UserState, SellerFundsSummaryState], {
       developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
@@ -41,7 +43,15 @@ import { MatMenuModule } from "@angular/material/menu";
     MatMenuModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {
+      provide: ErrorHandler,
+      useClass: JwtExpiredErrorHandler
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppRootComponent]
 })
