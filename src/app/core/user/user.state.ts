@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { UserStateModel } from "./user.state-model";
 import { UserService } from "../services/user-service";
 import { FetchUserAction } from "./fetch-user.action";
-import { tap } from "rxjs";
+import { catchError, tap } from "rxjs";
 import { UserBusinessModel } from "../business/user.business-model";
 
 @State<UserStateModel>({
@@ -30,6 +30,9 @@ export class UserState {
         ctx.patchState({
           user
         })
+      }),
+      catchError((err) => {
+        throw err;
       })
     )
   }

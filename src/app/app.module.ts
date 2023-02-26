@@ -18,12 +18,13 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatMenuModule } from "@angular/material/menu";
-import { JwtExpiredErrorHandler } from "./core/handlers/jwt-expired.error-handler";
+import { GlobalErrorHandler } from "./core/handlers/global.error-handler";
 import { SellerFundsSummaryState } from "./features/home/states/seller-funds-summary.state";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
-    AppRootComponent
+    AppRootComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,12 +41,13 @@ import { SellerFundsSummaryState } from "./features/home/states/seller-funds-sum
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [
     {
       provide: ErrorHandler,
-      useClass: JwtExpiredErrorHandler
+      useClass: GlobalErrorHandler
     },
     {
       provide: HTTP_INTERCEPTORS,

@@ -40,6 +40,7 @@ export class SellerFundsSummaryState {
     ctx.patchState({
       loading: true,
       error: false,
+      businessModel: null
     })
     return this.ebayService.getSellerFundsSummary().pipe(
       tap((business: SellerFundsSummaryBusinessModel) => {

@@ -6,10 +6,14 @@ import { catchError, map, Observable, of } from "rxjs";
 import { RouteEnum } from "../enums/route.enum";
 import { FetchUserAction } from "../user/fetch-user.action";
 import { UserStateModel } from "../user/user.state-model";
+import { SnackBarService } from "../services/snack-bar.service";
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
-  constructor(private store: Store, private router: Router) {
+
+  constructor(private store: Store,
+              private router: Router,
+              private snackBarService: SnackBarService) {
   }
 
   public canActivate(): Observable<boolean> {
@@ -28,6 +32,7 @@ export class AuthGuard implements CanActivate {
           }
         }),
         catchError((err) => {
+          this.snackBarService.openSnackBar("Veuillez vous reconnecter", "🔒");
           this.router.navigate([RouteEnum.LOGIN]);
           throw err;
         })
