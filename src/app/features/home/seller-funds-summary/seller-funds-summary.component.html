@@ -20,3 +20,9 @@
   <h2>{{title}}</h2>
   <p>{{fund.value}} {{fund.currency}}</p>
 </ng-template>
+<ng-container *ngIf="(error$ | async) === true">
+  <p>Une erreur est survenue</p>
+</ng-container>
+<ng-container *ngIf="(loading$ | async) === true">
+  <app-spinner></app-spinner>
+</ng-container>

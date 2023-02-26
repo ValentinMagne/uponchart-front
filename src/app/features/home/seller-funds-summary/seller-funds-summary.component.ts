@@ -13,6 +13,8 @@ import { FetchSellerFundsSummaryAction } from "../states/fetch-seller-funds-summ
 export class SellerFundsSummaryComponent implements OnInit {
 
   @Select(SellerFundsSummaryState.sellerFundsSummary) funds$!: Observable<SellerFundsSummaryBusinessModel> | null;
+  @Select(SellerFundsSummaryState.hasError) error$!: Observable<boolean>;
+  @Select(SellerFundsSummaryState.isLoading) loading$!: Observable<boolean>;
 
   constructor(private store: Store) {
   }
