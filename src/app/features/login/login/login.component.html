@@ -1,11 +1,11 @@
 <form [formGroup]="form" (submit)="onSubmit()">
   <mat-form-field>
-    <mat-label>Login</mat-label>
+    <mat-label>{{'login.email' | translate}}</mat-label>
     <input type="text" formControlName="login" matInput>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Password</mat-label>
+    <mat-label>{{'login.password' | translate}}</mat-label>
     <input type="password" formControlName="login" matInput>
   </mat-form-field>
-  <button type="submit" mat-raised-button color="accent" class="mr-1">Login</button>
+  <button type="submit" mat-raised-button color="accent" class="mr-1">{{'common.login' | translate}}</button>
 </form>

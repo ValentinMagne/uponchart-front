@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,9 @@ import { MatMenuModule } from "@angular/material/menu";
 import { GlobalErrorHandler } from "./core/handlers/global.error-handler";
 import { SellerFundsSummaryState } from "./features/home/states/seller-funds-summary.state";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { translationEn } from '../assets/i18n/translation-en';
+import { translationFr } from '../assets/i18n/translation-fr';
 
 @NgModule({
   declarations: [
@@ -42,9 +45,16 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'fr',
+    }),
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'fr'
+    },
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler
@@ -58,4 +68,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
   bootstrap: [AppRootComponent]
 })
 export class AppModule {
+  constructor(translate: TranslateService) {
+    translate.setTranslation('en', translationEn, true);
+    translate.setTranslation('fr', translationFr, true);
+  }
 }

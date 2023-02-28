@@ -10,22 +10,24 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { ConsentComponent } from "./consent/consent.component";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
     LoginComponent,
     ConsentComponent
   ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
-  ]
+    imports: [
+        CommonModule,
+        LoginRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        TranslateModule
+    ]
 })
 export class LoginModule {
 }

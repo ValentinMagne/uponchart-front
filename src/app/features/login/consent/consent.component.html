@@ -1,13 +1,13 @@
 <ng-container *ngIf="shouldConsent">
-  <p>Afin de pouvoir continuer, vous devez partager vos informations eBay avec Upon Chart !</p>
-  <button mat-raised-button color="primary" (click)="redirectToConsent()">Partager</button>
-  <button mat-raised-button color="warn" (click)="logout()">Me déconnecter</button>
+  <p>{{'consent.should-consent' | translate}}</p>
+  <button mat-raised-button color="primary" (click)="redirectToConsent()">{{'consent.share' | translate}}</button>
+  <button mat-raised-button color="warn" (click)="logout()">{{'common.logout' | translate}}</button>
 </ng-container>
 <ng-container *ngIf="consented">
-  <p>Bravo ! Vous pouvez désormais utiliser toutes les fonctionnalités d'Upon Chart !</p>
-  <button routerLink="{{routes.HOME}}" mat-raised-button color="warn">Retour</button>
+  <p>{{'consent.consented' | translate}}</p>
+  <button routerLink="{{routes.HOME}}" mat-raised-button color="warn">{{'common.return' | translate}}</button>
 </ng-container>
 <ng-container *ngIf="consentError">
-  <p>Nous sommes désolés, une erreur est survenue. Veuillez réessayer plus tard.</p>
-  <button routerLink="{{routes.LOGIN}}" mat-raised-button color="warn">Retour</button>
+  <p>{{'consent.consent-error' | translate}}</p>
+  <button routerLink="{{routes.LOGIN}}" mat-raised-button color="warn">{{'common.logout' | translate}}</button>
 </ng-container>

@@ -8,6 +8,7 @@ import { Observable } from "rxjs";
 import { AuthState } from "../../auth/auth-state";
 import { UserState } from "../../user/user.state";
 import { UserBusinessModel } from "../../business/user.business-model";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -20,13 +21,15 @@ export class AppRootComponent implements OnInit {
   @Select(UserState.user) user$!: Observable<UserBusinessModel> | null;
   @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
 
-  constructor(private authService: AuthService,
+  constructor(public translateService: TranslateService,
+              private authService: AuthService,
               private store: Store,
               private actions: Actions,
               private router: Router) {
   }
 
   public ngOnInit() {
+    this.translateService.use("fr");
     this.actions.pipe(ofActionDispatched(Logout)).subscribe(() => {
       this.router.navigate([RouteEnum.LOGIN]);
     });
@@ -40,5 +43,9 @@ export class AppRootComponent implements OnInit {
     const body = document.getElementsByTagName("body")[0];
     body.classList.toggle("dark-theme");
     this.lightTheme = !this.lightTheme;
+  }
+
+  public toggleLanguage(): void {
+    this.translateService.use(this.translateService.currentLang === "fr" ? "en" : "fr");
   }
 }

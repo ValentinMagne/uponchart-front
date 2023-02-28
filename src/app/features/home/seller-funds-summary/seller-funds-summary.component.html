@@ -1,19 +1,19 @@
 <ng-container *ngIf="funds$ | async as funds">
   <ng-container
     [ngTemplateOutlet]="fund"
-    [ngTemplateOutletContext]="{$implicit: funds.totalFunds, title: 'Fonds'}"
+    [ngTemplateOutletContext]="{$implicit: funds.totalFunds, title: 'home.total-funds' | translate}"
   ></ng-container>
   <ng-container
     [ngTemplateOutlet]="fund"
-    [ngTemplateOutletContext]="{$implicit: funds.availableFunds, title: 'Fonds disponibles'}"
+    [ngTemplateOutletContext]="{$implicit: funds.availableFunds, title: 'home.available-funds' | translate}"
   ></ng-container>
   <ng-container
     [ngTemplateOutlet]="fund"
-    [ngTemplateOutletContext]="{$implicit: funds.fundsOnHold, title: 'Fonds en attente'}"
+    [ngTemplateOutletContext]="{$implicit: funds.fundsOnHold, title: 'home.funds-on-hold' | translate}"
   ></ng-container>
   <ng-container
     [ngTemplateOutlet]="fund"
-    [ngTemplateOutletContext]="{$implicit: funds.processingFunds, title: 'Fonds en cours de traitement'}"
+    [ngTemplateOutletContext]="{$implicit: funds.processingFunds, title: 'home.processing-funds' | translate}"
   ></ng-container>
 </ng-container>
 <ng-template #fund let-fund let-title="title">

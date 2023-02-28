@@ -1,5 +1,5 @@
-<h2>Mon profil</h2>
-<button routerLink="{{routes.HOME}}" mat-raised-button color="warn">Retour</button>
+<h2>{{"account.title" | translate}}</h2>
+<button routerLink="{{routes.HOME}}" mat-raised-button color="warn">{{"common.return" | translate}}</button>
 <ng-container *ngIf="user$ | async as user">
   <p>Login : {{user.login}}</p>
 </ng-container>

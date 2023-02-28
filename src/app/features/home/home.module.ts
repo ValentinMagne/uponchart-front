@@ -5,18 +5,20 @@ import { HomeComponent } from "./home/home.component";
 import { MatButtonModule } from "@angular/material/button";
 import { SellerFundsSummaryComponent } from './seller-funds-summary/seller-funds-summary.component';
 import { ComponentsModule } from "../../core/modules/components.module";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
     HomeComponent,
     SellerFundsSummaryComponent
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    MatButtonModule,
-    ComponentsModule
-  ]
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        MatButtonModule,
+        ComponentsModule,
+        TranslateModule
+    ]
 })
 export class HomeModule {
 }
