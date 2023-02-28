@@ -13,6 +13,10 @@ export const translationFr = {
     share: 'Partager',
     'should-consent': 'Afin de pouvoir continuer, vous devez partager vos informations eBay avec Upon Chart !'
   },
+  error: {
+    subtitle: "Un problème s'est produit. Le service est temporairement indisponible.",
+    title: "Nous sommes désolés"
+  },
   home: {
     'available-funds': 'Fonds disponibles',
     'funds-on-hold': 'Fonds en attente',

@@ -13,6 +13,10 @@ export const translationEn = {
     share: 'Share',
     'should-consent': 'In order to continue, you must share your eBay information with Upon Chart!'
   },
+  error: {
+    subtitle: "A problem has occurred. The service is temporarily unavailable.",
+    title: "We are sorry"
+  },
   home: {
     'available-funds': 'Available funds',
     'funds-on-hold': 'Funds on hold',
