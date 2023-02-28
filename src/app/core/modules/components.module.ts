@@ -6,11 +6,13 @@ import { ErrorComponent } from "../components/error/error.component";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { TranslateModule } from "@ngx-translate/core";
+import { PieChartComponent } from "../components/pie-chart/pie-chart.component";
 
 @NgModule({
   declarations: [
     SpinnerComponent,
-    ErrorComponent
+    ErrorComponent,
+    PieChartComponent
   ],
     imports: [
         CommonModule,
@@ -21,7 +23,8 @@ import { TranslateModule } from "@ngx-translate/core";
     ],
   exports: [
     SpinnerComponent,
-    ErrorComponent
+    ErrorComponent,
+    PieChartComponent
   ]
 })
 export class ComponentsModule {
