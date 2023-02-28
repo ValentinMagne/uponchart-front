@@ -1,0 +1,4 @@
+{
+  "/api/ebay/sell/finance/seller-funds-summary": "/seller-funds-summary",
+  "/api/*": "/$1"
+}

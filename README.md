@@ -2,8 +2,17 @@
 
 ## Run
 
+* Dev
+
 ```shell
+npm run start-api # first launch mock api
 npm run start # navigate to http://localhost:4200/
+```
+
+* Staging
+
+```shell
+npm run start-staging # first start uponchart-back
 ```
 
 ## eBay

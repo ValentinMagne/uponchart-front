@@ -62,6 +62,14 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "staging": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -73,7 +81,12 @@
               "browserTarget": "uponchart-front:build:production"
             },
             "development": {
-              "browserTarget": "uponchart-front:build:development"
+              "browserTarget": "uponchart-front:build:development",
+              "proxyConfig": "test/api/proxy.conf-dev.json"
+            },
+            "staging": {
+              "browserTarget": "uponchart-front:build:staging",
+              "proxyConfig": "test/api/proxy.conf-staging.json"
             }
           },
           "defaultConfiguration": "development"

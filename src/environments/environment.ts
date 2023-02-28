@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: '/api',
   ebayAppId: 'VALENTIN-uponchar-SBX-4ee5f9cbd-69fc56c1',
   ebayRedirectURI: 'VALENTIN_MAGNE-VALENTIN-uponch-pzbgb'
 };
