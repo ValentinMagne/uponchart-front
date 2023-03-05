@@ -1,13 +1,12 @@
 import { Injectable, NgZone } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { AuthStateModel } from "./auth-state-model";
-import { Login } from "./login";
 import { catchError, tap } from "rxjs";
-import { Logout } from "./logout";
-import { AuthService, TOKEN_KEY } from "../services/auth.service";
+import { AuthService, TOKEN_KEY } from "../../services/auth.service";
 import { Router } from "@angular/router";
-import { LoginBusinessModel } from "../business/login.business-model";
-import { RouteEnum } from "../enums/route.enum";
+import { LoginBusinessModel } from "../../business/login.business-model";
+import { RouteEnum } from "../../enums/route.enum";
+import { Login, Logout } from "./auth.actions";
 
 @State<AuthStateModel>({
   name: 'auth',

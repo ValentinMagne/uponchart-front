@@ -4,9 +4,9 @@ import { UserService } from "../../../core/services/user-service";
 import { AuthService } from "../../../core/services/auth.service";
 import { FormLoginModel } from "../../../core/models/form-login.model";
 import { Select, Store } from "@ngxs/store";
-import { Login } from "../../../core/auth/login";
 import { Observable } from "rxjs";
-import { AuthState } from "../../../core/auth/auth-state";
+import { AuthState } from "../../../core/states/auth/auth-state";
+import { Login } from "../../../core/states/auth/auth.actions";
 
 @Component({
   selector: 'app-login',

@@ -1,10 +1,10 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { UserStateModel } from "./user.state-model";
-import { UserService } from "../services/user-service";
-import { FetchUserAction } from "./fetch-user.action";
+import { UserService } from "../../services/user-service";
+import { FetchUser } from "./fetch-user";
 import { catchError, tap } from "rxjs";
-import { UserBusinessModel } from "../business/user.business-model";
+import { UserBusinessModel } from "../../business/user.business-model";
 
 @State<UserStateModel>({
   name: 'user',
@@ -23,7 +23,7 @@ export class UserState {
   constructor(private userService: UserService) {
   }
 
-  @Action(FetchUserAction)
+  @Action(FetchUser)
   fetchUser(ctx: StateContext<UserStateModel>) {
     return this.userService.getMe().pipe(
       tap((user: UserBusinessModel) => {

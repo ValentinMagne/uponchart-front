@@ -1,9 +1,9 @@
 import { ErrorHandler, Injectable } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Store } from "@ngxs/store";
-import { Logout } from "../auth/logout";
 import { SnackBarService } from "../services/snack-bar.service";
 import { SnackBarActionEnum } from "../enums/snack-bar-action.enum";
+import { Logout } from "../states/auth/auth.actions";
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {

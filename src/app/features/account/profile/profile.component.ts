@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouteEnum } from "../../../core/enums/route.enum";
-import { UserState } from "../../../core/user/user.state";
+import { UserState } from "../../../core/states/user/user.state";
 import { Observable } from "rxjs";
 import { UserBusinessModel } from "../../../core/business/user.business-model";
 import { Select } from "@ngxs/store";

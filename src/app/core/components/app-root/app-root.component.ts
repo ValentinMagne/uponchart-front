@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { Actions, ofActionDispatched, Select, Store } from "@ngxs/store";
 import { Router } from "@angular/router";
-import { Logout } from "../../auth/logout";
 import { RouteEnum } from "../../enums/route.enum";
 import { Observable } from "rxjs";
-import { AuthState } from "../../auth/auth-state";
-import { UserState } from "../../user/user.state";
+import { AuthState } from "../../states/auth/auth-state";
+import { UserState } from "../../states/user/user.state";
 import { UserBusinessModel } from "../../business/user.business-model";
 import { TranslateService } from "@ngx-translate/core";
+import { Logout } from "../../states/auth/auth.actions";
 
 @Component({
   selector: 'app-root',

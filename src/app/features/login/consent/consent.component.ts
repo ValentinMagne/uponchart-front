@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { ApiRoutes } from "../../../core/config/api-routes";
-import { Logout } from "../../../core/auth/logout";
 import { Store } from "@ngxs/store";
 import { environment } from "../../../../environments/environment";
 import { RouteEnum } from "../../../core/enums/route.enum";
+import { Logout } from "../../../core/states/auth/auth.actions";
 
 @Component({
   selector: "app-consent",
