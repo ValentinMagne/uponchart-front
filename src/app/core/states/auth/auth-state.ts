@@ -14,7 +14,6 @@ import { Login, Logout, Register } from './auth.actions';
     token: null,
     username: null,
     isLoading: false,
-    hasError: false,
   }
 })
 @Injectable()
@@ -26,12 +25,12 @@ export class AuthState {
   }
 
   @Selector()
-  static isAuthenticated(state: AuthStateModel): boolean {
+  static hasToken(state: AuthStateModel): boolean {
     return !!state.token;
   }
 
   @Selector()
-  static username(state: AuthStateModel): string | null{
+  static username(state: AuthStateModel): string | null {
     return state.username;
   }
 
@@ -40,36 +39,30 @@ export class AuthState {
     return state.isLoading;
   }
 
-  @Selector()
-  static hasError(state: AuthStateModel): boolean {
-    return state.hasError;
-  }
-
   constructor(private loginService: LoginService, private router: Router, private ngZone: NgZone) {
   }
 
   @Action(Login)
   login(ctx: StateContext<AuthStateModel>, action: Login) {
     ctx.patchState({
-      isLoading: true,
-      hasError: false
+      isLoading: true
     });
     return this.loginService.login(action.payload).pipe(
       tap((authBusinessModel: AuthBusinessModel) => {
         ctx.patchState({
           token: authBusinessModel.token,
           username: action.payload.login,
-          isLoading: true, // keep loading before routing to HOME
-          hasError: false
+          isLoading: true // keep loading before routing to HOME
         });
         this.ngZone.run(() => {
           this.router.navigate([RouteEnum.HOME]);
         });
       }),
       catchError((error) => {
-        ctx.patchState({
-          isLoading: false,
-          hasError: true
+        ctx.setState({
+          token: null,
+          username: null,
+          isLoading: false
         });
         throw error;
       })
@@ -79,25 +72,24 @@ export class AuthState {
   @Action(Register)
   register(ctx: StateContext<AuthStateModel>, action: Register) {
     ctx.patchState({
-      isLoading: true,
-      hasError: false
+      isLoading: true
     });
     return this.loginService.register(action.payload).pipe(
       tap((authBusinessModel: AuthBusinessModel) => {
         ctx.patchState({
           token: authBusinessModel.token,
           username: action.payload.login,
-          isLoading: true, // keep loading before routing to HOME
-          hasError: false
+          isLoading: true // keep loading before routing to HOME
         });
         this.ngZone.run(() => {
           this.router.navigate([RouteEnum.HOME]);
         });
       }),
       catchError((error) => {
-        ctx.patchState({
-          isLoading: false,
-          hasError: true // TODO fix when routing, error keeps showing
+        ctx.setState({
+          token: null,
+          username: null,
+          isLoading: false
         });
         throw error;
       })
@@ -109,8 +101,7 @@ export class AuthState {
     ctx.setState({
       token: null,
       username: null,
-      isLoading: false,
-      hasError: false
+      isLoading: false
     });
   }
 }

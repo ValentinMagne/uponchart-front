@@ -17,7 +17,6 @@ import { RouteEnum } from '../../../core/enums/route.enum';
 export class LoginComponent implements OnInit {
   public form!: FormGroup;
   public routes = RouteEnum;
-  @Select(AuthState.hasError) hasError$!: Observable<boolean>;
   @Select(AuthState.isLoading) isLoading$!: Observable<boolean>;
 
   constructor(private userService: UserService,

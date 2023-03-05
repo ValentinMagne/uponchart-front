@@ -15,7 +15,6 @@ import { Logout } from "../../states/auth/auth.actions";
 export class AppRootComponent implements OnInit {
   public routes = RouteEnum;
   public lightTheme = true;
-  @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
   @Select(AuthState.username) username$!: Observable<string> | null;
 
   constructor(public translateService: TranslateService,

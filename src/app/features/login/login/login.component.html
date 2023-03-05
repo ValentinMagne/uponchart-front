@@ -27,9 +27,6 @@
     </mat-card>
   </div>
 </ng-container>
-<ng-container *ngIf="hasError$ | async">
-  <app-error></app-error>
-</ng-container>
 <ng-container *ngIf="isLoading$ | async">
   <app-spinner></app-spinner>
 </ng-container>

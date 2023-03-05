@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
 })
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
-  @Select(AuthState.hasError) hasError$!: Observable<boolean>;
   @Select(AuthState.isLoading) isLoading$!: Observable<boolean>;
 
   constructor(private store: Store) {
