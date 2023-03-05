@@ -1,0 +1,23 @@
+<mat-toolbar color="primary" role="heading" class="justify-content-between">
+  <h1 class="m-0 mouse-over" routerLink="{{routes.HOME}}">Upon Chart</h1>
+  <div>
+    <button mat-icon-button (click)="toggleLanguage()">
+      <mat-icon color="accent">flag</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleTheme()">
+      <mat-icon>{{lightTheme ? 'light_mode' : 'dark_mode'}}</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="headingMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+  <mat-menu #headingMenu>
+    <ng-container *ngIf="isAuthenticated$ | async">
+      <div class="identity">{{username$ | async}}</div>
+      <button mat-menu-item routerLink="{{routes.ACCOUNT}}">{{'navbar.account' | translate}}</button>
+      <button mat-menu-item (click)="logout()">{{'common.logout' | translate}}</button>
+    </ng-container>
+    <button mat-menu-item *ngIf="!(isAuthenticated$ | async)"
+            routerLink="{{routes.LOGIN}}">{{'common.login' | translate}}</button>
+  </mat-menu>
+</mat-toolbar>

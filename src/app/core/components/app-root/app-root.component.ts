@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Actions, ofActionDispatched, Select, Store } from "@ngxs/store";
+import { Actions, ofActionDispatched } from "@ngxs/store";
 import { Router } from "@angular/router";
 import { RouteEnum } from "../../enums/route.enum";
-import { Observable } from "rxjs";
-import { AuthState } from "../../states/auth/auth-state";
 import { TranslateService } from "@ngx-translate/core";
 import { Logout } from "../../states/auth/auth.actions";
 
@@ -13,13 +11,8 @@ import { Logout } from "../../states/auth/auth.actions";
   styleUrls: ['./app-root.component.scss']
 })
 export class AppRootComponent implements OnInit {
-  public routes = RouteEnum;
-  public lightTheme = true;
-  @Select(AuthState.username) username$!: Observable<string> | null;
-  @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
 
   constructor(public translateService: TranslateService,
-              private store: Store,
               private actions: Actions,
               private router: Router) {
   }
@@ -29,19 +22,5 @@ export class AppRootComponent implements OnInit {
     this.actions.pipe(ofActionDispatched(Logout)).subscribe(() => {
       this.router.navigate([RouteEnum.LOGIN]);
     });
-  }
-
-  public logout(): void {
-    this.store.dispatch(Logout);
-  }
-
-  public toggleTheme(): void {
-    const body = document.getElementById("uponchart-body");
-    body?.classList.toggle("dark-theme");
-    this.lightTheme = !this.lightTheme;
-  }
-
-  public toggleLanguage(): void {
-    this.translateService.use(this.translateService.currentLang === "fr" ? "en" : "fr");
   }
 }
