@@ -2,7 +2,7 @@ import { Injectable, NgZone } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { AuthStateModel } from "./auth-state-model";
 import { catchError, tap } from "rxjs";
-import { AuthService, TOKEN_KEY } from "../../services/auth.service";
+import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { LoginBusinessModel } from "../../business/login.business-model";
 import { RouteEnum } from "../../enums/route.enum";
@@ -79,6 +79,5 @@ export class AuthState {
       isLoading: false,
       hasError: false
     });
-    localStorage.removeItem(TOKEN_KEY);
   }
 }

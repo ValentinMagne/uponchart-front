@@ -7,6 +7,7 @@ import { RouteEnum } from "../enums/route.enum";
 import { FetchUser } from "../states/user/fetch-user";
 import { UserStateModel } from "../states/user/user.state-model";
 import { SnackBarService } from "../services/snack-bar.service";
+import { Logout } from "../states/auth/auth.actions";
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -33,7 +34,7 @@ export class AuthGuard implements CanActivate {
         }),
         catchError((err) => {
           this.snackBarService.openSnackBar("Veuillez vous reconnecter", "🔒");
-          this.router.navigate([RouteEnum.LOGIN]);
+          this.store.dispatch(Logout);
           throw err;
         })
       )
