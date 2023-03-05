@@ -24,8 +24,11 @@ export const translationFr = {
     'total-funds': 'Fonds'
   },
   login: {
+    admin: 'Administrateur',
+    'demo-account': 'Connectez-vous avec un compte de démo',
     email: 'Login',
-    password: 'Mot de passe'
+    password: 'Mot de passe',
+    user: 'Utilisateur'
   },
   navbar: {
     account: 'Compte'

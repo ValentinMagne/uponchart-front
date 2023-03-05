@@ -12,24 +12,26 @@ import { MatButtonModule } from "@angular/material/button";
 import { ConsentComponent } from "./consent/consent.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { ComponentsModule } from "../../core/modules/components.module";
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   declarations: [
     LoginComponent,
     ConsentComponent
   ],
-    imports: [
-        CommonModule,
-        LoginRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        TranslateModule,
-        ComponentsModule
-    ]
+  imports: [
+    CommonModule,
+    LoginRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    TranslateModule,
+    ComponentsModule,
+    MatCardModule
+  ]
 })
 export class LoginModule {
 }
