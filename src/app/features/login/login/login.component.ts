@@ -3,8 +3,10 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../../core/services/user-service";
 import { AuthService } from "../../../core/services/auth.service";
 import { FormLoginModel } from "../../../core/models/form-login.model";
-import { Store } from "@ngxs/store";
+import { Select, Store } from "@ngxs/store";
 import { Login } from "../../../core/auth/login";
+import { Observable } from "rxjs";
+import { AuthState } from "../../../core/auth/auth-state";
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,8 @@ import { Login } from "../../../core/auth/login";
 })
 export class LoginComponent implements OnInit {
   public form!: FormGroup;
+  @Select(AuthState.hasError) hasError$!: Observable<boolean>;
+  @Select(AuthState.isLoading) isLoading$!: Observable<boolean>;
 
   constructor(private userService: UserService,
               private loginService: AuthService,

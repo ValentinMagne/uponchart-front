@@ -1,11 +1,19 @@
-<form [formGroup]="form" (submit)="onSubmit()">
-  <mat-form-field>
-    <mat-label>{{'login.email' | translate}}</mat-label>
-    <input type="text" formControlName="login" matInput>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>{{'login.password' | translate}}</mat-label>
-    <input type="password" formControlName="login" matInput>
-  </mat-form-field>
-  <button type="submit" mat-raised-button color="accent" class="mr-1">{{'common.login' | translate}}</button>
-</form>
+<ng-container *ngIf="!(isLoading$ | async)">
+  <form [formGroup]="form" (submit)="onSubmit()" class="d-flex flex-column align-items-center mt-1">
+    <mat-form-field>
+      <mat-label>{{'login.email' | translate}}</mat-label>
+      <input type="text" formControlName="login" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{'login.password' | translate}}</mat-label>
+      <input type="password" formControlName="login" matInput>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="accent" class="mr-1">{{'common.login' | translate}}</button>
+  </form>
+</ng-container>
+<ng-container *ngIf="hasError$ | async">
+  <app-error></app-error>
+</ng-container>
+<ng-container *ngIf="isLoading$ | async">
+  <app-spinner></app-spinner>
+</ng-container>

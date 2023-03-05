@@ -11,6 +11,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { ConsentComponent } from "./consent/consent.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { ComponentsModule } from "../../core/modules/components.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TranslateModule } from "@ngx-translate/core";
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        TranslateModule
+        TranslateModule,
+        ComponentsModule
     ]
 })
 export class LoginModule {
