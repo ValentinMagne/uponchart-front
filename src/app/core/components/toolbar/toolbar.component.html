@@ -14,10 +14,19 @@
   <mat-menu #headingMenu>
     <ng-container *ngIf="isAuthenticated$ | async">
       <div class="identity">{{username$ | async}}</div>
-      <button mat-menu-item routerLink="{{routes.ACCOUNT}}">{{'navbar.account' | translate}}</button>
-      <button mat-menu-item (click)="logout()">{{'common.logout' | translate}}</button>
+      <button mat-menu-item routerLink="{{routes.ACCOUNT}}">
+        <mat-icon>settings</mat-icon>
+        <span>{{'navbar.account' | translate}}</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>{{'common.logout' | translate}}</span>
+      </button>
     </ng-container>
     <button mat-menu-item *ngIf="!(isAuthenticated$ | async)"
-            routerLink="{{routes.LOGIN}}">{{'common.login' | translate}}</button>
+            routerLink="{{routes.LOGIN}}">
+      <mat-icon>login</mat-icon>
+      <span>{{'common.login' | translate}}</span>
+    </button>
   </mat-menu>
 </mat-toolbar>
