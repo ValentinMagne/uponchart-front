@@ -1,0 +1,36 @@
+{
+  "login": {
+    "token": "token_value"
+  },
+  "register": {
+    "token": "token_value"
+  },
+  "me": {
+    "id": "user_id",
+    "login": "test@uponchart.com",
+    "authorities": [
+      "ANONYMOUS",
+      "ADMIN",
+      "USER"
+    ],
+    "consented": true
+  },
+  "seller-funds-summary": {
+    "totalFunds": {
+      "value": "818.96",
+      "currency": "USD"
+    },
+    "processingFunds": {
+      "value": "442.96",
+      "currency": "USD"
+    },
+    "availableFunds": {
+      "value": "-38.0",
+      "currency": "USD"
+    },
+    "fundsOnHold": {
+      "value": "414.0",
+      "currency": "USD"
+    }
+  }
+}

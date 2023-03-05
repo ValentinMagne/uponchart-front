@@ -1,11 +1,32 @@
-<form [formGroup]="form" (submit)="onSubmit()">
-  <mat-form-field>
-    <mat-label>{{'login.email' | translate}}</mat-label>
-    <input type="text" formControlName="login" matInput>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>{{'login.password' | translate}}</mat-label>
-    <input type="password" formControlName="login" matInput>
-  </mat-form-field>
-  <button type="submit" mat-raised-button color="accent" class="mr-1">{{'common.login' | translate}}</button>
-</form>
+<ng-container *ngIf="!(isLoading$ | async)">
+  <form [formGroup]="form" (submit)="onSubmit()" class="d-flex flex-column align-items-center mt-1">
+    <mat-form-field>
+      <mat-label>{{'login.common.email' | translate}}</mat-label>
+      <input type="text" formControlName="login" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{'login.common.password' | translate}}</mat-label>
+      <input type="password" formControlName="password" matInput>
+    </mat-form-field>
+    <div class="d-flex flex-column">
+      <button type="submit" class="mb-1" mat-raised-button color="accent">{{'common.login' | translate}}</button>
+      <button type="button" routerLink="{{routes.REGISTER}}" mat-button color="accent">{{'login.common.register' | translate}}</button>
+    </div>
+  </form>
+  <div class="card-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{'login.login.demo-account' | translate}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="d-flex flex-column">
+          <button mat-raised-button color="primary" class="mb-1" (click)="demoLogin('admin')">{{'login.login.admin' | translate}}</button>
+          <button mat-raised-button color="primary" (click)="demoLogin('user')">{{'login.login.user' | translate}}</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>
+<ng-container *ngIf="isLoading$ | async">
+  <app-spinner></app-spinner>
+</ng-container>

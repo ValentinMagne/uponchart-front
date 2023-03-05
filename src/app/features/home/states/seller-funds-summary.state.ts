@@ -1,10 +1,10 @@
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs";
-import { FetchSellerFundsSummaryAction } from "./fetch-seller-funds-summary.action";
 import { SellerFundsSummaryStateModel } from "./seller-funds-summary.state-model";
 import { EbayService } from "../../../core/services/ebay.service";
 import { SellerFundsSummaryBusinessModel } from "../../../core/business/seller-funds-summary.business-model";
+import { FetchSellerFundsSummary } from "./seller-funds-summary.actions";
 
 @State<SellerFundsSummaryStateModel>({
   name: 'seller',
@@ -35,7 +35,7 @@ export class SellerFundsSummaryState {
   constructor(private ebayService: EbayService) {
   }
 
-  @Action(FetchSellerFundsSummaryAction)
+  @Action(FetchSellerFundsSummary)
   fetchSellerFundsSummary(ctx: StateContext<SellerFundsSummaryStateModel>) {
     ctx.patchState({
       loading: true,

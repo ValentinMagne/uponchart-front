@@ -3,7 +3,7 @@ import { SellerFundsSummaryBusinessModel } from "../../../core/business/seller-f
 import { Select, Store } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { SellerFundsSummaryState } from "../states/seller-funds-summary.state";
-import { FetchSellerFundsSummaryAction } from "../states/fetch-seller-funds-summary.action";
+import { FetchSellerFundsSummary } from "../states/seller-funds-summary.actions";
 
 @Component({
   selector: 'app-seller-funds-summary',
@@ -20,6 +20,6 @@ export class SellerFundsSummaryComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.store.dispatch(FetchSellerFundsSummaryAction);
+    this.store.dispatch(FetchSellerFundsSummary);
   }
 }

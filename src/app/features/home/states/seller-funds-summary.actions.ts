@@ -1,3 +1,3 @@
-export class FetchSellerFundsSummaryAction {
+export class FetchSellerFundsSummary {
   static readonly type = '[SellerFundsSummary] Fetch Seller Funds Summary';
 }

@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
 import { Store } from "@ngxs/store";
-import { AuthState } from "../auth/auth-state";
+import { AuthState } from "../states/auth/auth-state";
 import { catchError, map, Observable, of } from "rxjs";
 import { RouteEnum } from "../enums/route.enum";
-import { FetchUserAction } from "../user/fetch-user.action";
-import { UserStateModel } from "../user/user.state-model";
 import { SnackBarService } from "../services/snack-bar.service";
+import { FetchUser, Logout } from "../states/auth/auth.actions";
+import { AuthStateModel } from "../states/auth/auth-state-model";
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -17,14 +17,14 @@ export class AuthGuard implements CanActivate {
   }
 
   public canActivate(): Observable<boolean> {
-    const isAuthenticated = this.store.selectSnapshot(AuthState.isAuthenticated);
+    const isAuthenticated = this.store.selectSnapshot(AuthState.hasToken);
     if (!isAuthenticated) {
       this.router.navigate([RouteEnum.LOGIN]);
       return of(false);
     } else {
-      return this.store.dispatch(FetchUserAction).pipe(
-        map((state: { user: UserStateModel | null }) => {
-          if (state.user?.user?.consented) {
+      return this.store.dispatch(FetchUser).pipe(
+        map((state: { auth: AuthStateModel | null }) => {
+          if (state.auth?.user?.consented) {
             return true;
           } else {
             this.router.navigate([RouteEnum.CONSENT]);
@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
         }),
         catchError((err) => {
           this.snackBarService.openSnackBar("Veuillez vous reconnecter", "🔒");
-          this.router.navigate([RouteEnum.LOGIN]);
+          this.store.dispatch(Logout);
           throw err;
         })
       )

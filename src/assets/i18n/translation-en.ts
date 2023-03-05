@@ -24,8 +24,19 @@ export const translationEn = {
     'total-funds': 'Funds'
   },
   login: {
-    email: 'Login',
-    password: 'Password'
+    common: {
+      email: 'Login',
+      password: 'Password',
+      register: 'Sign up'
+    },
+    login: {
+      admin: 'Admin',
+      'demo-account': 'Login with a demo account',
+      user: 'User'
+    },
+    register: {
+      title: "Create your Upon Chart account, it's easy and free!"
+    }
   },
   navbar: {
     account: 'Account'

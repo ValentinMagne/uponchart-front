@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpContextToken, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthState } from "../auth/auth-state";
+import { AuthState } from "../states/auth/auth-state";
 import { Store } from "@ngxs/store";
 
 export const SKIP_AUTH_BEARER = new HttpContextToken(() => false);
