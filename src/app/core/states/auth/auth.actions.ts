@@ -18,3 +18,7 @@ export class Register {
 export class Logout {
   static readonly type = '[Auth] Logout';
 }
+
+export class FetchUser {
+  static readonly type = '[User] Fetch User';
+}

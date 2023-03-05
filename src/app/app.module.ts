@@ -11,7 +11,6 @@ import { environment } from "../environments/environment";
 import { AuthState } from "./core/states/auth/auth-state";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { HomeModule } from "./features/home/home.module";
-import { UserState } from "./core/states/user/user.state";
 import { AccountModule } from "./features/account/account.module";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
@@ -34,7 +33,7 @@ import { translationFr } from '../assets/i18n/translation-fr';
     LoginModule,
     HomeModule,
     AccountModule,
-    NgxsModule.forRoot([AuthState, UserState, SellerFundsSummaryState], {
+    NgxsModule.forRoot([AuthState, SellerFundsSummaryState], {
       developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({

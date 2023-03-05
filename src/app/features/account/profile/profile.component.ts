@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouteEnum } from "../../../core/enums/route.enum";
-import { UserState } from "../../../core/states/user/user.state";
-import { Observable } from "rxjs";
-import { UserBusinessModel } from "../../../core/business/user.business-model";
-import { Select } from "@ngxs/store";
+import { RouteEnum } from '../../../core/enums/route.enum';
+import { Observable } from 'rxjs';
+import { UserBusinessModel } from '../../../core/business/user.business-model';
+import { Select } from '@ngxs/store';
+import { AuthState } from '../../../core/states/auth/auth-state';
 
 @Component({
   selector: 'app-profile',
@@ -12,5 +12,5 @@ import { Select } from "@ngxs/store";
 })
 export class ProfileComponent {
   public routes = RouteEnum;
-  @Select(UserState.user) user$!: Observable<UserBusinessModel> | null;
+  @Select(AuthState.user) user$!: Observable<UserBusinessModel> | null;
 }

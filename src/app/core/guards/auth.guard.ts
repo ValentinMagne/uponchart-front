@@ -4,10 +4,9 @@ import { Store } from "@ngxs/store";
 import { AuthState } from "../states/auth/auth-state";
 import { catchError, map, Observable, of } from "rxjs";
 import { RouteEnum } from "../enums/route.enum";
-import { FetchUser } from "../states/user/fetch-user";
-import { UserStateModel } from "../states/user/user.state-model";
 import { SnackBarService } from "../services/snack-bar.service";
-import { Logout } from "../states/auth/auth.actions";
+import { FetchUser, Logout } from "../states/auth/auth.actions";
+import { AuthStateModel } from "../states/auth/auth-state-model";
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -24,8 +23,8 @@ export class AuthGuard implements CanActivate {
       return of(false);
     } else {
       return this.store.dispatch(FetchUser).pipe(
-        map((state: { user: UserStateModel | null }) => {
-          if (state.user?.user?.consented) {
+        map((state: { auth: AuthStateModel | null }) => {
+          if (state.auth?.user?.consented) {
             return true;
           } else {
             this.router.navigate([RouteEnum.CONSENT]);

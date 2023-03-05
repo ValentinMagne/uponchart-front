@@ -16,6 +16,7 @@ export class AppRootComponent implements OnInit {
   public routes = RouteEnum;
   public lightTheme = true;
   @Select(AuthState.username) username$!: Observable<string> | null;
+  @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
 
   constructor(public translateService: TranslateService,
               private store: Store,
