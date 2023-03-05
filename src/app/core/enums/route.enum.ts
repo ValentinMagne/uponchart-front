@@ -1,6 +1,7 @@
 export enum RouteEnum {
-  HOME = "",
   ACCOUNT = "/account",
+  CONSENT = "/login/consent",
+  HOME = "",
   LOGIN = "/login",
-  CONSENT = "/login/consent"
+  REGISTER = "/login/register"
 }

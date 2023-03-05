@@ -24,11 +24,19 @@ export const translationFr = {
     'total-funds': 'Fonds'
   },
   login: {
-    admin: 'Administrateur',
-    'demo-account': 'Connectez-vous avec un compte de démo',
-    email: 'Login',
-    password: 'Mot de passe',
-    user: 'Utilisateur'
+    common: {
+      email: 'Login',
+      password: 'Mot de passe',
+      register: "S'enregistrer",
+    },
+    login: {
+      admin: 'Administrateur',
+      'demo-account': 'Connectez-vous avec un compte de démo',
+      user: 'Utilisateur'
+    },
+    register: {
+      title: "Créez votre compte Upon Chart, c'est simple et gratuit !"
+    }
   },
   navbar: {
     account: 'Compte'

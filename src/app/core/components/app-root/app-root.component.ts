@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth.service";
 import { Actions, ofActionDispatched, Select, Store } from "@ngxs/store";
 import { Router } from "@angular/router";
 import { RouteEnum } from "../../enums/route.enum";
 import { Observable } from "rxjs";
 import { AuthState } from "../../states/auth/auth-state";
-import { UserState } from "../../states/user/user.state";
-import { UserBusinessModel } from "../../business/user.business-model";
 import { TranslateService } from "@ngx-translate/core";
 import { Logout } from "../../states/auth/auth.actions";
 
@@ -18,11 +15,10 @@ import { Logout } from "../../states/auth/auth.actions";
 export class AppRootComponent implements OnInit {
   public routes = RouteEnum;
   public lightTheme = true;
-  @Select(UserState.user) user$!: Observable<UserBusinessModel> | null;
   @Select(AuthState.isAuthenticated) isAuthenticated$!: Observable<boolean>;
+  @Select(AuthState.username) username$!: Observable<string> | null;
 
   constructor(public translateService: TranslateService,
-              private authService: AuthService,
               private store: Store,
               private actions: Actions,
               private router: Router) {
@@ -40,8 +36,8 @@ export class AppRootComponent implements OnInit {
   }
 
   public toggleTheme(): void {
-    const body = document.getElementsByTagName("body")[0];
-    body.classList.toggle("dark-theme");
+    const body = document.getElementById("uponchart-body");
+    body?.classList.toggle("dark-theme");
     this.lightTheme = !this.lightTheme;
   }
 

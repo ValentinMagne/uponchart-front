@@ -2,6 +2,9 @@
   "login": {
     "token": "token_value"
   },
+  "register": {
+    "token": "token_value"
+  },
   "me": {
     "id": "user_id",
     "login": "test@uponchart.com",

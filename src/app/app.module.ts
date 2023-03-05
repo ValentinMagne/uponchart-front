@@ -11,7 +11,6 @@ import { environment } from "../environments/environment";
 import { AuthState } from "./core/states/auth/auth-state";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { HomeModule } from "./features/home/home.module";
-import { TOKEN_KEY } from "./core/services/auth.service";
 import { UserState } from "./core/states/user/user.state";
 import { AccountModule } from "./features/account/account.module";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -39,7 +38,7 @@ import { translationFr } from '../assets/i18n/translation-fr';
       developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
-      key: TOKEN_KEY
+      key: 'auth.token'
     }),
     MatToolbarModule,
     MatIconModule,

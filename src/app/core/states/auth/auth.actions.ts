@@ -1,8 +1,18 @@
-import { FormLoginModel } from "../../models/form-login.model";
+import { LoginFormModel } from "../../../features/login/models/login-form.model";
+import { RegisterFormModel } from "../../../features/login/models/register-form.model";
 
 export class Login {
   static readonly type = '[Auth] Login';
-  constructor(public payload: FormLoginModel) {}
+
+  constructor(public payload: LoginFormModel) {
+  }
+}
+
+export class Register {
+  static readonly type = '[Auth] Register';
+
+  constructor(public payload: RegisterFormModel) {
+  }
 }
 
 export class Logout {

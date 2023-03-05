@@ -12,12 +12,12 @@
     </button>
   </div>
   <mat-menu #headingMenu>
-    <ng-container *ngIf="isAuthenticated$ | async">
-      <div class="identity">{{(user$ | async)?.login}}</div>
+    <ng-container *ngIf="(username$ | async) as username">
+      <div class="identity">{{username}}</div>
       <button mat-menu-item routerLink="{{routes.ACCOUNT}}">{{'navbar.account' | translate}}</button>
       <button mat-menu-item (click)="logout()">{{'common.logout' | translate}}</button>
     </ng-container>
-    <button mat-menu-item *ngIf="!(isAuthenticated$ | async)"
+    <button mat-menu-item *ngIf="!(username$ | async)"
             routerLink="{{routes.LOGIN}}">{{'common.login' | translate}}</button>
   </mat-menu>
 </mat-toolbar>

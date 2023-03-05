@@ -1,0 +1,22 @@
+<h2 class="d-flex justify-content-center">{{'login.register.title' | translate}}</h2>
+<ng-container *ngIf="!(isLoading$ | async)">
+  <form [formGroup]="form" (submit)="onSubmit()" class="d-flex flex-column align-items-center mt-1">
+    <mat-form-field>
+      <mat-label>{{'login.common.email' | translate}}</mat-label>
+      <input type="text" formControlName="login" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{'login.common.password' | translate}}</mat-label>
+      <input type="password" formControlName="password" matInput>
+    </mat-form-field>
+    <div class="d-flex flex-column">
+      <button type="submit" class="mb-1" mat-raised-button color="accent">{{'login.common.register' | translate}}</button>
+    </div>
+  </form>
+</ng-container>
+<ng-container *ngIf="hasError$ | async">
+  <app-error></app-error>
+</ng-container>
+<ng-container *ngIf="isLoading$ | async">
+  <app-spinner></app-spinner>
+</ng-container>

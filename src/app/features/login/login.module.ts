@@ -13,11 +13,13 @@ import { ConsentComponent } from "./consent/consent.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { ComponentsModule } from "../../core/modules/components.module";
 import { MatCardModule } from "@angular/material/card";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    ConsentComponent
+    ConsentComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
