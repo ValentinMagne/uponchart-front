@@ -5,6 +5,7 @@ import { SellerFundsSummaryStateModel } from "./seller-funds-summary.state-model
 import { EbayService } from "../../../core/services/ebay.service";
 import { SellerFundsSummaryBusinessModel } from "../../../core/business/seller-funds-summary.business-model";
 import { FetchSellerFundsSummary } from "./seller-funds-summary.actions";
+import { PieChartModel } from "../../../core/models/pie-chart.model";
 
 @State<SellerFundsSummaryStateModel>({
   name: 'seller',
@@ -20,6 +21,20 @@ export class SellerFundsSummaryState {
   @Selector()
   static sellerFundsSummary(state: SellerFundsSummaryStateModel): SellerFundsSummaryBusinessModel | null {
     return state.businessModel;
+  }
+
+  @Selector()
+  static chartData(state: SellerFundsSummaryStateModel): PieChartModel[] | null {
+    return [
+      {
+        label: "fonds disponibles",
+        value: 10
+      },
+      {
+        label: "fonds en attente",
+        value: 20
+      }
+    ];
   }
 
   @Selector()

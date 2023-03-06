@@ -1,3 +1,6 @@
+<ng-container *ngIf="chartData$ | async as chartData">
+  <app-pie-chart [chartData]="chartData"></app-pie-chart>
+</ng-container>
 <ng-container *ngIf="funds$ | async as funds">
   <ng-container
     [ngTemplateOutlet]="fund"
