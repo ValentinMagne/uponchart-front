@@ -19,6 +19,7 @@ export const translationEn = {
   },
   home: {
     'available-funds': 'Available funds',
+    'dashboard': 'Dashboard',
     'funds-on-hold': 'Funds on hold',
     'processing-funds': 'Processing funds',
     'total-funds': 'Funds'

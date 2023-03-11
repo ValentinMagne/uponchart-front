@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+/* LIGHT THEME */
+$uc-primary: mat.define-palette(mat.$teal-palette, 500);
+$uc-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
+$uc-warn: mat.define-palette(mat.$pink-palette);
+
+/* DARK THEME */
+$uc-primary-dark: mat.define-palette(mat.$deep-purple-palette);
+$uc-accent-dark: mat.define-palette(mat.$blue-grey-palette, A400, A100, A700);
+$uc-warn-dark: mat.define-palette(mat.$orange-palette);
