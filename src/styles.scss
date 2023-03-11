@@ -1,8 +1,27 @@
+@use '@angular/material' as mat;
 @import "src/assets/styles/display";
 @import "src/assets/styles/flex-helpers";
 @import "src/assets/styles/interactions";
-@import "src/assets/styles/spacing";
 @import "src/assets/styles/containers";
+@import "src/assets/styles/colors";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #{mat.get-color-from-palette($uc-primary)};
+    --color-accent: #{mat.get-color-from-palette($uc-accent)};
+    --color-warn: #{mat.get-color-from-palette($uc-warn)};
+  }
+
+  .dark-theme {
+    --color-primary: #{mat.get-color-from-palette($uc-primary-dark)};
+    --color-accent: #{mat.get-color-from-palette($uc-accent-dark)};
+    --color-warn: #{mat.get-color-from-palette($uc-warn-dark)};
+  }
+}
 
 html {
   height: 100%;
